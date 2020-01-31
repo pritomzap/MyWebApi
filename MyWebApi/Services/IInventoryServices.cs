@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyWebApi.Services
 {
-    interface IInventoryServices
+    public interface IInventoryServices
     {
         InventoryItem AddInventoryItems(InventoryItem items);
         Dictionary<string,InventoryItem> GetInventoryItems();

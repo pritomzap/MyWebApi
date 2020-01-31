@@ -11,9 +11,9 @@ using MyWebApi.Services;
 
 namespace MyWebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/")]
     [ApiController]
-    class InventoryController : ControllerBase
+    public class InventoryController : ControllerBase
     {
         private readonly IInventoryServices _services;
 
