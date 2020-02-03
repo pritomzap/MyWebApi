@@ -17,30 +17,37 @@ namespace MyWebApi.Controllers
     {
         private readonly IInventoryServices _services;
 
-        public InventoryController(IInventoryServices services)
+        //private readonly InventoryContext _context;
+
+        public InventoryController(IInventoryServices services,InventoryContext _context)
         {
             _services = services;
+            _services.context = _context;
         }
 
         [HttpPost]
         [Route("AddInventoryItems")]
-        public ActionResult<InventoryItem> AddInventoryItems(InventoryItem items)
+        public async Task<IActionResult> AddInventoryItems([FromBody]InventoryItem items)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var inventoryItems = _services.AddInventoryItems(items);
 
-            return inventoryItems == null ? (ActionResult<InventoryItem>)NotFound() : inventoryItems;
+            await _services.context.SaveChangesAsync();
+
+            return CreatedAtAction("GetInventory", new { id = inventoryItems.Id }, items);
+
         }
 
         [HttpGet]
         [Route("GetInventoryItems")]
-        public ActionResult<Dictionary<string,InventoryItem>> GetInventoryItems()
+        public IEnumerable<InventoryItem> GetInventoryItems()
         {
             var inventoryItems = _services.GetInventoryItems();
-
-            if (inventoryItems.Count == 0)
-            {
-                return NotFound();
-            }
 
             return inventoryItems;
         }

@@ -15,6 +15,8 @@ namespace MyWebApi.Models
             base.OnModelCreating(modelBuilder);
         }
 
+       
+
         public DbSet<InventoryItem> InventoryItems { get; set; }
     }
 }

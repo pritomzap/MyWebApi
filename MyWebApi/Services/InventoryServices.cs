@@ -8,23 +8,27 @@ namespace MyWebApi.Services
 {
     public class InventoryServices : IInventoryServices
     {
-        private readonly Dictionary<string,InventoryItem> _inventoryItems;
+        //private readonly Dictionary<string,InventoryItem> _inventoryItems;
+
+       
 
         public InventoryServices()
         {
-            _inventoryItems = new Dictionary<string, InventoryItem>();
+            
         }
+
+        public InventoryContext context { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public InventoryItem AddInventoryItems(InventoryItem items)
         {
-            _inventoryItems.Add(items.Name, items);
+            context.InventoryItems.Add( items);
 
             return items;
         }
 
-        public Dictionary<string, InventoryItem> GetInventoryItems()
+        public IEnumerable<InventoryItem> GetInventoryItems()
         {
-            return _inventoryItems;
+            return context.InventoryItems;
         }
     }
 }
