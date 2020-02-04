@@ -10,25 +10,26 @@ namespace MyWebApi.Services
     {
         //private readonly Dictionary<string,InventoryItem> _inventoryItems;
 
-       
+        private InventoryContext _context;
 
-        public InventoryServices()
+        public InventoryServices(InventoryContext context)
         {
-            
+            _context = context; 
         }
-
-        public InventoryContext context { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        
+       
         public InventoryItem AddInventoryItems(InventoryItem items)
         {
-            context.InventoryItems.Add( items);
+            _context.InventoryItems.Add( items);
+
+            _context.SaveChanges();
 
             return items;
         }
 
         public IEnumerable<InventoryItem> GetInventoryItems()
         {
-            return context.InventoryItems;
+            return _context.InventoryItems;
         }
     }
 }

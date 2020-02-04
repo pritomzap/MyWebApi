@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebApi.Models;
 
-namespace MyWebApi.Data.Migrations
+namespace MyWebApi.Migrations
 {
     [DbContext(typeof(InventoryContext))]
     partial class InventoryContextModelSnapshot : ModelSnapshot
@@ -21,9 +21,7 @@ namespace MyWebApi.Data.Migrations
             modelBuilder.Entity("MyWebApi.Models.InventoryItem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

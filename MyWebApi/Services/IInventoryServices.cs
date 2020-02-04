@@ -8,7 +8,6 @@ namespace MyWebApi.Services
 {
     public interface IInventoryServices
     {
-        public InventoryContext context { get; set; }
         InventoryItem AddInventoryItems(InventoryItem items);
         IEnumerable<InventoryItem> GetInventoryItems();
     }

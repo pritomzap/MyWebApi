@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyWebApi.Data.Migrations
+namespace MyWebApi.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -10,8 +10,7 @@ namespace MyWebApi.Data.Migrations
                 name: "InventoryItems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false)
                 },

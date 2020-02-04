@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyWebApi.Models;
 
-namespace MyWebApi.Data.Migrations
+namespace MyWebApi.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    [Migration("20200203175929_InitialCreate")]
+    [Migration("20200204174828_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,7 @@ namespace MyWebApi.Data.Migrations
             modelBuilder.Entity("MyWebApi.Models.InventoryItem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

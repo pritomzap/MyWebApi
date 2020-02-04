@@ -36,7 +36,7 @@ namespace MyWebApi
 
             services.AddControllers();
 
-            services.AddSingleton<IInventoryServices, InventoryServices>();
+            services.AddScoped<IInventoryServices, InventoryServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -17,12 +17,9 @@ namespace MyWebApi.Controllers
     {
         private readonly IInventoryServices _services;
 
-        //private readonly InventoryContext _context;
-
-        public InventoryController(IInventoryServices services,InventoryContext _context)
+        public InventoryController(IInventoryServices services)
         {
             _services = services;
-            _services.context = _context;
         }
 
         [HttpPost]
@@ -37,9 +34,7 @@ namespace MyWebApi.Controllers
 
             var inventoryItems = _services.AddInventoryItems(items);
 
-            await _services.context.SaveChangesAsync();
-
-            return CreatedAtAction("GetInventory", new { id = inventoryItems.Id }, items);
+            return Ok(inventoryItems);
 
         }
 
